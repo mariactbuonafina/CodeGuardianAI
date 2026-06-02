@@ -400,7 +400,11 @@ Definido para:
 * Controlar consumo de tokens.
 * Garantir execução determinística.
 
-Observação: em caso de erros ou interrupções nos agentes finais, aumentar max_output_tokens para 800~1200.
+Observação: em caso de erros ou interrupções nos agentes finais:
+* Limite sua resposta a no máximo 300-500 palavras.
+* Seja objetivo.
+* Evite repetir informações já presentes no contexto.
+* Não produza explicações extensas.
 
 ---
 
