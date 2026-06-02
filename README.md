@@ -396,10 +396,11 @@ max_turns = 9
 ```
 
 Definido para:
-
 * Evitar conversas infinitas.
 * Controlar consumo de tokens.
 * Garantir execução determinística.
+
+Observação: em caso de erros ou interrupções nos agentes finais, aumentar max_output_tokens para 800~1200.
 
 ---
 
