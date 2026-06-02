@@ -1,0 +1,20 @@
+{
+  "provider": "autogen_ext.models.openai.OpenAIChatCompletionClient",
+  "component_type": "model",
+  "version": 1,
+  "component_version": 1,
+  "description": "Local Qwen3 VL 8B model client for LM Studio.",
+  "label": "Qwen3-VL-8B Local",
+  "config": {
+    "model": "qwen/qwen3-vl-8b",
+    "base_url": "http://localhost:1234/v1",
+    "api_key": "lm-studio",
+    "model_info": {
+      "vision": true,
+      "function_calling": true,
+      "json_output": true,
+      "family": "qwen",
+      "structured_output": true
+    }
+  }
+}
