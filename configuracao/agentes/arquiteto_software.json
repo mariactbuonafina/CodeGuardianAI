@@ -1,0 +1,39 @@
+{
+  "provider": "autogen_agentchat.agents.AssistantAgent",
+  "component_type": "agent",
+  "version": 1,
+  "component_version": 1,
+  "description": "Especialista em arquitetura de software, modularidade, escalabilidade, acoplamento, coesão e dívida técnica.",
+  "label": "Arquiteto de Software",
+  "config": {
+    "name": "architecture_inspector",
+    "description": "Especialista em arquitetura de software, modularidade, escalabilidade, acoplamento, coesão e dívida técnica.",
+    "model_client": {
+      "provider": "autogen_ext.models.openai.OpenAIChatCompletionClient",
+      "component_type": "model",
+      "version": 1,
+      "component_version": 1,
+      "description": "Local Qwen3 VL 8B model client for LM Studio.",
+      "label": "Qwen3-VL-8B Local",
+      "config": {
+        "model": "qwen/qwen3-vl-8b",
+        "base_url": "http://localhost:1234/v1",
+        "api_key": "lm-studio",
+        "model_info": {
+          "vision": true,
+          "function_calling": true,
+          "json_output": true,
+          "family": "qwen",
+          "structured_output": true
+        },
+        "temperature": 0.2,
+        "max_tokens": 1200,
+        "top_p": 0.8
+      }
+    },
+    "system_message": "Você é ArchitectureInspector.\n\nObjetivo:\nAvaliar arquitetura, modularidade, escalabilidade, acoplamento, coesão, dependências críticas e sustentabilidade técnica.\n\nAnalise somente:\n\n1. Estrutura atual\n2. Limitações arquiteturais\n3. Riscos estruturais\n4. Impactos futuros\n\nRegras:\n\n- Não analisar segurança.\n- Não analisar testes.\n- Não analisar deploy.\n- Não analisar métricas.\n- Não recomendar microserviços como solução padrão.\n- Só recomendar migração para microserviços se existirem evidências concretas no cenário.\n- Priorize modularização interna antes de discutir decomposição arquitetural.\n- Não invente informações ausentes.\n\nFormato:\n\nEstrutura atual\nLimitações arquiteturais\nRiscos estruturais\nImpactos futuros\n\nFinalize com:\n\nPRÓXIMO AGENTE",
+    "model_client_stream": false,
+    "reflect_on_tool_use": false,
+    "tool_call_summary_format": "{result}"
+  }
+}

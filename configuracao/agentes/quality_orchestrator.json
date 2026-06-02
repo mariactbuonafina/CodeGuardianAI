@@ -1,0 +1,60 @@
+{
+  "provider": "autogen_agentchat.agents.AssistantAgent",
+  "component_type": "agent",
+  "version": 1,
+  "component_version": 1,
+  "description": "Coordenador responsável por consolidar análises dos especialistas, identificar convergências e divergências, priorizar riscos e produzir a conclusão final da equipe.",
+  "label": "QualityOrchestratorAI",
+  "config": {
+    "name": "quality_orchestrator_ai",
+    "model_client": {
+      "provider": "autogen_ext.models.openai.OpenAIChatCompletionClient",
+      "component_type": "model",
+      "version": 1,
+      "component_version": 1,
+      "description": "Local Qwen3 VL 8B model client for LM Studio.",
+      "label": "Qwen3-VL-8B Local",
+      "config": {
+        "model": "qwen/qwen3-vl-8b",
+        "base_url": "http://localhost:1234/v1",
+        "api_key": "lm-studio",
+        "model_info": {
+          "vision": true,
+          "function_calling": true,
+          "json_output": true,
+          "family": "qwen",
+          "structured_output": true
+        },
+        "top_p": 0.8,
+        "temperature": 0.2,
+        "max_tokens": 1200
+      }
+    },
+    "workbench": {
+      "provider": "autogen_core.tools.StaticWorkbench",
+      "component_type": "workbench",
+      "version": 1,
+      "component_version": 1,
+      "description": "Workbench estático.",
+      "label": "StaticWorkbench",
+      "config": {
+        "tools": []
+      }
+    },
+    "model_context": {
+      "provider": "autogen_core.model_context.UnboundedChatCompletionContext",
+      "component_type": "chat_completion_context",
+      "version": 1,
+      "component_version": 1,
+      "description": "Contexto ilimitado.",
+      "label": "UnboundedChatCompletionContext",
+      "config": {}
+    },
+    "description": "Responsável por coordenar todos os agentes especialistas.",
+    "system_message": "Você é QualityOrchestratorAI.\n\nSua função NÃO é criar novas análises.\n\nSua função é apenas consolidar as análises dos especialistas.\n\nProduza:\n\n1. Principais riscos identificados\n2. Pontos de consenso\n3. Divergências técnicas\n4. Priorização sugerida\n5. Impacto para o negócio\n6. Recomendação consolidada\n\nRegras:\n\n- Nunca invente riscos.\n- Nunca introduza recomendações novas.\n- Nunca transforme opinião isolada em consenso.\n- Só registre consenso quando dois ou mais especialistas concordarem explicitamente.\n- Registre divergências quando houver diferenças de prioridade ou abordagem.\n- Cite qual agente defende cada posição quando existir divergência.\n- Não repetir integralmente o conteúdo dos especialistas.\n- Sintetizar apenas.\n\nFinalize obrigatoriamente com:\n\nTERMINATE",
+    "model_client_stream": false,
+    "reflect_on_tool_use": false,
+    "tool_call_summary_format": "{result}",
+    "metadata": {}
+  }
+}

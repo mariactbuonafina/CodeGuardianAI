@@ -1,0 +1,27 @@
+# Input Inicial
+
+```text
+Estamos desenvolvendo uma plataforma SaaS para gestão financeira de pequenas empresas.
+
+Contexto atual:
+Backend em Java 8 monolítico.
+900 mil linhas de código.
+Banco PostgreSQL único.
+Deploy manual.
+Cobertura de testes inferior a 10%.
+Sem CI/CD.
+Sem monitoramento centralizado.
+Logs inconsistentes.
+APIs sem rate limiting.
+Autenticação apenas por usuário e senha.
+Sem MFA.
+Documentação desatualizada.
+50 mil usuários ativos por mês.
+Reclamações frequentes de lentidão.
+
+Equipe:
+4 desenvolvedores backend.
+1 frontend.
+1 QA.
+1 DevOps.
+```

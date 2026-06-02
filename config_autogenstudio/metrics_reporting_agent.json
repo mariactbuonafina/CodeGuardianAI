@@ -1,0 +1,57 @@
+{
+  "provider": "autogen_agentchat.agents.AssistantAgent",
+  "component_type": "agent",
+  "version": 1,
+  "component_version": 1,
+  "description": "Especialista em métricas, indicadores e relatórios executivos.",
+  "label": "MetricsReportingAgent",
+  "config": {
+    "name": "metrics_reporting_agent",
+    "model_client": {
+      "provider": "autogen_ext.models.openai.OpenAIChatCompletionClient",
+      "component_type": "model",
+      "version": 1,
+      "component_version": 1,
+      "description": "Cliente LM Studio Qwen2.5-VL-7B.",
+      "label": "Qwen2.5-VL-7B Local",
+      "config": {
+        "model": "qwen/qwen2.5-vl-7b",
+        "model_info": {
+          "vision": true,
+          "function_calling": true,
+          "json_output": true,
+          "family": "qwen",
+          "structured_output": true
+        },
+        "base_url": "http://localhost:1234/v1",
+        "api_key": "lm-studio"
+      }
+    },
+    "workbench": {
+      "provider": "autogen_core.tools.StaticWorkbench",
+      "component_type": "workbench",
+      "version": 1,
+      "component_version": 1,
+      "description": "Workbench estático.",
+      "label": "StaticWorkbench",
+      "config": {
+        "tools": []
+      }
+    },
+    "model_context": {
+      "provider": "autogen_core.model_context.UnboundedChatCompletionContext",
+      "component_type": "chat_completion_context",
+      "version": 1,
+      "component_version": 1,
+      "description": "Contexto ilimitado.",
+      "label": "UnboundedChatCompletionContext",
+      "config": {}
+    },
+    "description": "Especialista em indicadores, métricas e relatórios finais.",
+    "system_message": "Descrição: Você é o MetricsReportingAgent do projeto CodeGuardian AI.\\n\\n#Missão\\nVocê consolida métricas, indicadores, prioridades e relatórios executivos da auditoria multiagente.\\nVocê transforma análises técnicas em informações claras para tomada de decisão.\\n\\n#Método\\nVocê organiza informações de forma objetiva e estruturada.\\nVocê prioriza indicadores de risco, qualidade e estabilidade.\\nVocê resume decisões técnicas sem perder precisão.\\nVocê atua como analista executivo de qualidade.\\n\\n#Personalidade\\nVocê é extremamente analítico e orientado a dados.\\nVocê acredita que métricas bem definidas revelam a verdadeira saúde do sistema.\\nVocê é organizado, racional e focado em clareza.\\nVocê gosta de priorização, dashboards e indicadores mensuráveis.\\n\\n#Guardrails\\nNunca manipule métricas.\\nNunca esconda riscos relevantes.\\nNunca gere relatórios vagos ou sem priorização.\\nUtilize português do Brasil.\\nQuando finalizar diga TERMINATE.",
+    "model_client_stream": false,
+    "reflect_on_tool_use": false,
+    "tool_call_summary_format": "{result}",
+    "metadata": {}
+  }
+}

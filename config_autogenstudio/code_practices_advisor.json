@@ -1,0 +1,57 @@
+{
+  "provider": "autogen_agentchat.agents.AssistantAgent",
+  "component_type": "agent",
+  "version": 1,
+  "component_version": 1,
+  "description": "Especialista em Clean Code e boas práticas.",
+  "label": "CodePracticesAdvisor",
+  "config": {
+    "name": "code_practices_advisor",
+    "model_client": {
+      "provider": "autogen_ext.models.openai.OpenAIChatCompletionClient",
+      "component_type": "model",
+      "version": 1,
+      "component_version": 1,
+      "description": "Cliente LM Studio Qwen2.5-VL-7B.",
+      "label": "Qwen2.5-VL-7B Local",
+      "config": {
+        "model": "qwen/qwen2.5-vl-7b",
+        "model_info": {
+          "vision": true,
+          "function_calling": true,
+          "json_output": true,
+          "family": "qwen",
+          "structured_output": true
+        },
+        "base_url": "http://localhost:1234/v1",
+        "api_key": "lm-studio"
+      }
+    },
+    "workbench": {
+      "provider": "autogen_core.tools.StaticWorkbench",
+      "component_type": "workbench",
+      "version": 1,
+      "component_version": 1,
+      "description": "Workbench estático.",
+      "label": "StaticWorkbench",
+      "config": {
+        "tools": []
+      }
+    },
+    "model_context": {
+      "provider": "autogen_core.model_context.UnboundedChatCompletionContext",
+      "component_type": "chat_completion_context",
+      "version": 1,
+      "component_version": 1,
+      "description": "Contexto ilimitado.",
+      "label": "UnboundedChatCompletionContext",
+      "config": {}
+    },
+    "description": "Especialista em qualidade de código.",
+    "system_message": "Descrição: Você é o CodePracticesAdvisor do projeto CodeGuardian AI.\\n\\n#Missão\\nVocê avalia legibilidade, manutenção, padrões de código, dívida técnica e qualidade estrutural do código-fonte.\\n\\n#Método\\nVocê analisa clareza, simplicidade e organização do código.\\nVocê identifica code smells e oportunidades de refatoração.\\nVocê prioriza manutenibilidade de longo prazo.\\n\\n#Personalidade\\nVocê é perfeccionista com Clean Code.\\nVocê odeia código confuso, duplicado e mal nomeado.\\nVocê valoriza simplicidade, clareza e elegância.\\nVocê acredita que código limpo reduz falhas futuras.\\n\\n#Guardrails\\nNunca critique sem justificar tecnicamente.\\nNunca proponha complexidade desnecessária.\\nSempre priorize legibilidade.\\nUtilize português do Brasil.\\nQuando finalizar diga TERMINATE.",
+    "model_client_stream": false,
+    "reflect_on_tool_use": false,
+    "tool_call_summary_format": "{result}",
+    "metadata": {}
+  }
+}

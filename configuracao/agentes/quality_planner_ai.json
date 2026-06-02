@@ -1,0 +1,60 @@
+{
+  "provider": "autogen_agentchat.agents.AssistantAgent",
+  "component_type": "agent",
+  "version": 1,
+  "component_version": 1,
+  "description": "Responsável por interpretar a solicitação inicial, definir o plano da auditoria e orientar os especialistas sobre os pontos que devem ser analisados.",
+  "label": "QualityPlannerAI",
+  "config": {
+    "name": "quality_planner_ai",
+    "model_client": {
+      "provider": "autogen_ext.models.openai.OpenAIChatCompletionClient",
+      "component_type": "model",
+      "version": 1,
+      "component_version": 1,
+      "description": "Local Qwen3 VL 8B model client for LM Studio.",
+      "label": "Qwen3-VL-8B Local",
+      "config": {
+        "model": "qwen/qwen3-vl-8b",
+        "base_url": "http://localhost:1234/v1",
+        "api_key": "lm-studio",
+        "model_info": {
+          "vision": true,
+          "function_calling": true,
+          "json_output": true,
+          "family": "qwen",
+          "structured_output": true
+        },
+        "top_p": 0.8,
+        "temperature": 0.2,
+        "max_tokens": 1200
+      }
+    },
+    "workbench": {
+      "provider": "autogen_core.tools.StaticWorkbench",
+      "component_type": "workbench",
+      "version": 1,
+      "component_version": 1,
+      "description": "Workbench estático.",
+      "label": "StaticWorkbench",
+      "config": {
+        "tools": []
+      }
+    },
+    "model_context": {
+      "provider": "autogen_core.model_context.UnboundedChatCompletionContext",
+      "component_type": "chat_completion_context",
+      "version": 1,
+      "component_version": 1,
+      "description": "Contexto ilimitado.",
+      "label": "UnboundedChatCompletionContext",
+      "config": {}
+    },
+    "description": "Responsável por iniciar a auditoria e orientar os especialistas.",
+    "system_message": "Você é o QualityPlannerAI.\n\nPapel:\nCoordenador inicial da auditoria.\nSua função NÃO é analisar o sistema.\n\nSua função é:\n- compreender o cenário recebido;\n- resumir o contexto em poucas linhas;\n- definir a sequência de trabalho dos especialistas;\n- informar quais aspectos cada especialista deverá observar.\n\nEspecialistas disponíveis:\nRequirementsReviewer\nArchitectureInspector\nCodePracticesAdvisor\nTestStrategist\nDevOpsEngineer\nSecurityAnalyst\nMetricsReportingAgent\n\nREGRAS:\n- Não produza diagnóstico técnico.\n- Não produza recomendações.\n- Não proponha soluções.\n- Não identifique riscos.\n- Não conclua nada.\n\nVocê apenas organiza a auditoria.\n\nFormato obrigatório:\n\nCONTEXTO RESUMIDO\n\nPLANO DE AUDITORIA:\nRequirementsReviewer:\n[o que analisar]\n\nArchitectureInspector:\n[o que analisar]\n\nCodePracticesAdvisor:\n[o que analisar]\n\nTestStrategist:\n[o que analisar]\n\nDevOpsEngineer:\n[o que analisar]\n\nSecurityAnalyst:\n[o que analisar]\n\nMetricsReportingAgent:\n[o que analisar]\n\nPRÓXIMA ETAPA:\nIniciar análises dos especialistas.\n\nFinalize obrigatoriamente com:\nPRÓXIMO AGENTE",
+    "model_client_stream": false,
+    "reflect_on_tool_use": false,
+    "tool_call_summary_format": "{result}",
+    "metadata": {}
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "provider": "autogen_agentchat.agents.AssistantAgent",
+  "component_type": "agent",
+  "version": 1,
+  "component_version": 1,
+  "description": "Especialista em métricas, priorização, severidade, impacto, indicadores e análise quantitativa.",
+  "label": "Agente de Relatórios e Métricas",
+  "config": {
+    "name": "metrics_reporting_agent",
+    "description": "Especialista em métricas, priorização, severidade, impacto, indicadores e análise quantitativa.",
+    "model_client": {
+      "provider": "autogen_ext.models.openai.OpenAIChatCompletionClient",
+      "component_type": "model",
+      "version": 1,
+      "component_version": 1,
+      "description": "Local Qwen3 VL 8B model client for LM Studio.",
+      "label": "Qwen3-VL-8B Local",
+      "config": {
+        "model": "qwen/qwen3-vl-8b",
+        "base_url": "http://localhost:1234/v1",
+        "api_key": "lm-studio",
+        "model_info": {
+          "vision": true,
+          "function_calling": true,
+          "json_output": true,
+          "family": "qwen",
+          "structured_output": true
+        },
+        "temperature": 0.2,
+        "max_tokens": 1200,
+        "top_p": 0.8
+      }
+    },
+    "system_message": "Você é MetricsReportingAgent.\n\nObjetivo:\nAvaliar métricas existentes, métricas ausentes e impacto dos riscos.\n\nAnalise somente:\n\n1. Métricas existentes\n2. Métricas ausentes\n3. Riscos prioritários\n4. Impacto esperado\n\nRegras:\n\n- Não propor soluções.\n- Não recomendar tecnologias.\n- Não sugerir ferramentas.\n- Não definir arquitetura.\n- Não repetir recomendações de outros agentes.\n\nSeu papel é apenas quantificar impacto e priorizar riscos.\n\nFormato:\n\nMétricas existentes\nMétricas ausentes\nRiscos prioritários\nImpacto esperado\n\nFinalize com:\n\nPRÓXIMO AGENTE",
+    "model_client_stream": false,
+    "reflect_on_tool_use": false,
+    "tool_call_summary_format": "{result}"
+  }
+}

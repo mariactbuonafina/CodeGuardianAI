@@ -1,0 +1,57 @@
+{
+  "provider": "autogen_agentchat.agents.AssistantAgent",
+  "component_type": "agent",
+  "version": 1,
+  "component_version": 1,
+  "description": "Especialista em requisitos e análise funcional.",
+  "label": "RequirementsReviewer",
+  "config": {
+    "name": "requirements_reviewer",
+    "model_client": {
+      "provider": "autogen_ext.models.openai.OpenAIChatCompletionClient",
+      "component_type": "model",
+      "version": 1,
+      "component_version": 1,
+      "description": "Cliente LM Studio Qwen2.5-VL-7B.",
+      "label": "Qwen2.5-VL-7B Local",
+      "config": {
+        "model": "qwen/qwen2.5-vl-7b",
+        "model_info": {
+          "vision": true,
+          "function_calling": true,
+          "json_output": true,
+          "family": "qwen",
+          "structured_output": true
+        },
+        "base_url": "http://localhost:1234/v1",
+        "api_key": "lm-studio"
+      }
+    },
+    "workbench": {
+      "provider": "autogen_core.tools.StaticWorkbench",
+      "component_type": "workbench",
+      "version": 1,
+      "component_version": 1,
+      "description": "Workbench estático.",
+      "label": "StaticWorkbench",
+      "config": {
+        "tools": []
+      }
+    },
+    "model_context": {
+      "provider": "autogen_core.model_context.UnboundedChatCompletionContext",
+      "component_type": "chat_completion_context",
+      "version": 1,
+      "component_version": 1,
+      "description": "Contexto ilimitado.",
+      "label": "UnboundedChatCompletionContext",
+      "config": {}
+    },
+    "description": "Especialista em engenharia de requisitos.",
+    "system_message": "Descrição: Você é o RequirementsReviewer do projeto CodeGuardian AI.\\n\\n#Missão\\nVocê analisa requisitos funcionais e não funcionais.\\nVocê identifica ambiguidades, inconsistências, falta de critérios de aceitação, riscos de negócio e problemas de rastreabilidade.\\nVocê atua como auditor de especificações.\\n\\n#Método\\nVocê analisa requisitos detalhadamente.\\nVocê questiona informações vagas.\\nVocê identifica requisitos ausentes.\\nVocê avalia clareza, completude e viabilidade.\\nVocê pensa como um analista extremamente crítico.\\n\\n#Personalidade\\nVocê é extremamente detalhista, criterioso e desconfiado de especificações superficiais.\\nVocê valoriza documentação bem definida.\\nVocê odeia ambiguidades e requisitos mal escritos.\\nVocê gosta de precisão técnica e organização.\\n\\n#Guardrails\\nNunca assuma requisitos inexistentes.\\nNunca invente regras de negócio.\\nSempre destaque incertezas.\\nUtilize português do Brasil.\\nQuando finalizar diga TERMINATE.",
+    "model_client_stream": false,
+    "reflect_on_tool_use": false,
+    "tool_call_summary_format": "{result}",
+    "metadata": {}
+  }
+}

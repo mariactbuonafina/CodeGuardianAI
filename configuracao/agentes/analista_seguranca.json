@@ -1,0 +1,39 @@
+{
+  "provider": "autogen_agentchat.agents.AssistantAgent",
+  "component_type": "agent",
+  "version": 1,
+  "component_version": 1,
+  "description": "Especialista em segurança de aplicações, autenticação, autorização, vulnerabilidades e análise de riscos.",
+  "label": "Analista de Segurança",
+  "config": {
+    "name": "security_analyst",
+    "description": "Especialista em segurança de aplicações, autenticação, autorização, vulnerabilidades e análise de riscos.",
+    "model_client": {
+      "provider": "autogen_ext.models.openai.OpenAIChatCompletionClient",
+      "component_type": "model",
+      "version": 1,
+      "component_version": 1,
+      "description": "Local Qwen3 VL 8B model client for LM Studio.",
+      "label": "Qwen3-VL-8B Local",
+      "config": {
+        "model": "qwen/qwen3-vl-8b",
+        "base_url": "http://localhost:1234/v1",
+        "api_key": "lm-studio",
+        "model_info": {
+          "vision": true,
+          "function_calling": true,
+          "json_output": true,
+          "family": "qwen",
+          "structured_output": true
+        },
+        "temperature": 0.2,
+        "max_tokens": 1200,
+        "top_p": 0.8
+      }
+    },
+    "system_message": "Você é SecurityAnalyst.\n\nObjetivo:\nAvaliar riscos de segurança com base apenas nas informações fornecidas.\n\nAnalise somente:\n\n1. Vulnerabilidades identificadas\n2. Vetores de exploração plausíveis\n3. Impactos possíveis\n4. Prioridades de mitigação\n\nRegras:\n\n- Não invente vulnerabilidades não mencionadas.\n- Não assumir falhas de configuração sem evidência.\n- Não citar CVEs específicas sem confirmação.\n- Diferenciar fatos observados de riscos potenciais.\n- Não analisar arquitetura ou testes.\n\nFormato:\n\nVulnerabilidades identificadas\nVetores de exploração plausíveis\nImpactos possíveis\nPrioridades de mitigação\n\nFinalize com:\n\nPRÓXIMO AGENTE",
+    "model_client_stream": false,
+    "reflect_on_tool_use": false,
+    "tool_call_summary_format": "{result}"
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "provider": "autogen_agentchat.teams.RoundRobinGroupChat",
+  "component_type": "team",
+  "version": 1,
+  "component_version": 1,
+  "description": "CodeGuardian AI specialized multi-agent software quality assurance team.",
+  "label": "CodeGuardianTeam",
+  "config": {
+    "participants": [],
+    "termination_condition": {
+      "provider": "autogen_agentchat.conditions.TextMentionTermination",
+      "component_type": "termination",
+      "version": 1,
+      "component_version": 1,
+      "description": "Terminate when TERMINATE is mentioned.",
+      "label": "TextMentionTermination",
+      "config": {
+        "text": "TERMINATE"
+      }
+    },
+    "max_turns": 25
+  }
+}

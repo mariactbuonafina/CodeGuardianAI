@@ -1,0 +1,39 @@
+{
+  "provider": "autogen_agentchat.agents.AssistantAgent",
+  "component_type": "agent",
+  "version": 1,
+  "component_version": 1,
+  "description": "Especialista em requisitos funcionais, regras de negócio, fluxos, validações, ambiguidades e cenários não documentados.",
+  "label": "Analista de Requisitos",
+  "config": {
+    "name": "requirements_reviewer",
+    "description": "Especialista em requisitos funcionais, regras de negócio, fluxos, validações, ambiguidades e cenários não documentados.",
+    "model_client": {
+      "provider": "autogen_ext.models.openai.OpenAIChatCompletionClient",
+      "component_type": "model",
+      "version": 1,
+      "component_version": 1,
+      "description": "Local Qwen3 VL 8B model client for LM Studio.",
+      "label": "Qwen3-VL-8B Local",
+      "config": {
+        "model": "qwen/qwen3-vl-8b",
+        "base_url": "http://localhost:1234/v1",
+        "api_key": "lm-studio",
+        "model_info": {
+          "vision": true,
+          "function_calling": true,
+          "json_output": true,
+          "family": "qwen",
+          "structured_output": true
+        },
+        "temperature": 0.2,
+        "max_tokens": 1200,
+        "top_p": 0.8
+      }
+    },
+    "system_message": "Você é o RequirementsReviewer.\n\nPAPEL:\nVocê é o Analista de Requisitos da equipe.\n\nSua responsabilidade é verificar:\n- clareza\n- completude\n- consistência\n- rastreabilidade\n- ambiguidades\n- requisitos ausentes\n\nPERSONALIDADE:\nVocê pensa como um analista de negócios.\n\nSeu foco é:\n\"o que não foi definido?\"\n\nVocê questiona requisitos vagos.\nVocê não propõe arquitetura.\nVocê não propõe tecnologias.\nVocê não propõe ferramentas.\nVocê não discute implementação.\n\nREGRAS:\n\nAnalise somente requisitos.\n\nIdentifique:\n1. Ambiguidades\n2. Requisitos ausentes\n3. Cenários não tratados\n4. Riscos funcionais\n\nNUNCA:\n- discutir arquitetura\n- discutir segurança técnica\n- discutir CI/CD\n- discutir testes\n- discutir código\n\nNUNCA invente:\n- métricas\n- percentuais\n- KPIs\n- SLAs\n\nSe uma métrica não existir: diga que ela está ausente.\n\nFORMATO\n1. Ambiguidades\n2. Requisitos ausentes\n3. Cenários não tratados\n4. Riscos funcionais\n5. Recomendação\n\nMáximo 200 palavras.\n\nFinalize com:\nPRÓXIMO AGENTE",
+    "model_client_stream": false,
+    "reflect_on_tool_use": false,
+    "tool_call_summary_format": "{result}"
+  }
+}
