@@ -1,5 +1,6 @@
-# Sistema Multiagente para Auditoria de Qualidade de Software
+# CodeGuardian AI
 
+> Sistema Multiagente para Auditoria de Qualidade de Software.
 > Projeto desenvolvido para a Residência Tecnológica do Porto Digital, utilizando uma arquitetura multiagente baseada em LLMs especializados para execução colaborativa de auditorias técnicas em sistemas de software.
 
 ---
@@ -309,25 +310,18 @@ Orchestrator
 
 # 🔧 Tecnologias Utilizadas
 
-## Framework Multiagente
+## Ferramentas Multiagente
 
+* LM Studio
 * AutoGen AgentChat
 
-## Linguagem
-
-* Python 3.12+
-
-## Provedor de IA
-
-* OpenRouter
-
-## Modelo Utilizado
+## Modelo de LLM Utilizado
 
 ### Qwen3-VL-8B
 
 Características:
 
-* Baixo custo computacional.
+* Custo computacional médio.
 * Boa capacidade de raciocínio.
 * Boa aderência a instruções.
 * Respostas consistentes para agentes especializados.
