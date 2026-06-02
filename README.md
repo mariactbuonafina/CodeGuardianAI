@@ -1,26 +1,28 @@
-# 🤖 Sistema Multiagente para Auditoria de Qualidade de Software
+# Sistema Multiagente para Auditoria de Qualidade de Software
 
-## 📌 Sobre o Projeto
-
-Este projeto implementa um sistema multiagente para realização de auditorias técnicas em sistemas de software utilizando Inteligência Artificial.
-
-A solução foi desenvolvida com uma arquitetura baseada em especialistas, onde cada agente possui uma responsabilidade específica dentro do processo de análise. As avaliações individuais são posteriormente consolidadas por um agente orquestrador responsável por produzir uma recomendação final.
-
-O objetivo é simular uma equipe multidisciplinar de engenharia de software composta por especialistas em arquitetura, requisitos, qualidade, testes, DevOps, segurança e métricas.
+> Projeto desenvolvido para a Residência Tecnológica do Porto Digital, utilizando uma arquitetura multiagente baseada em LLMs especializados para execução colaborativa de auditorias técnicas em sistemas de software.
 
 ---
 
-# 🎯 Objetivos
+# 📋 Visão Geral
 
-O sistema foi projetado para:
+O objetivo deste projeto foi construir uma equipe virtual composta por agentes especializados capazes de realizar auditorias completas em sistemas de software, simulando a atuação de profissionais reais de uma equipe de engenharia.
+
+O sistema utiliza um modelo de coordenação centralizada, onde um agente planejador distribui tarefas para especialistas, um orquestrador consolida os resultados e cada especialista atua dentro de seu domínio de conhecimento.
+
+O cenário utilizado para validação foi uma plataforma SaaS de gestão financeira com diversos problemas arquiteturais, operacionais, de qualidade e segurança.
+
+---
+
+# 🎯 Objetivos do Projeto
+
+O sistema foi desenvolvido para:
 
 * Realizar auditorias técnicas automatizadas.
-* Identificar riscos de arquitetura, segurança e operação.
-* Detectar lacunas de requisitos.
-* Avaliar qualidade do código e estratégia de testes.
-* Priorizar problemas por impacto e criticidade.
-* Consolidar recomendações de múltiplos especialistas.
-* Demonstrar coordenação entre agentes de IA.
+* Simular discussões entre especialistas.
+* Identificar riscos e gargalos.
+* Produzir recomendações consolidadas.
+* Demonstrar coordenação entre múltiplos agentes baseados em LLM.
 
 ---
 
@@ -33,383 +35,734 @@ Usuário
 QualityPlannerAI
    │
    ▼
-┌─────────────────────────────┐
-│ RequirementsReviewer        │
-│ ArchitectureInspector       │
-│ CodePracticesAdvisor        │
-│ TestStrategist              │
-│ DevOpsEngineer              │
-│ SecurityAnalyst             │
-│ MetricsReportingAgent       │
-└─────────────────────────────┘
+RequirementsReviewer
+   │
+   ▼
+ArchitectureInspector
+   │
+   ▼
+CodePracticesAdvisor
+   │
+   ▼
+TestStrategist
+   │
+   ▼
+DevOpsEngineer
+   │
+   ▼
+SecurityAnalyst
+   │
+   ▼
+MetricsReportingAgent
    │
    ▼
 QualityOrchestratorAI
    │
    ▼
-TERMINATE
+Resposta Final Consolidada
 ```
 
 ---
 
-# 👥 Agentes Especialistas
+# 🤖 Equipe de Agentes
 
-## QualityPlannerAI
+## 1. QualityPlannerAI
 
-Responsável por:
+### Papel
 
-* Resumir o contexto recebido.
-* Definir o plano de auditoria.
-* Distribuir responsabilidades para os especialistas.
-* Iniciar o processo de análise.
+Planejar a auditoria.
 
----
+### Responsabilidades
 
-## RequirementsReviewer
+* Resumir contexto.
+* Identificar especialistas necessários.
+* Definir sequência de execução.
+* Distribuir objetivos para cada agente.
+* Não realizar análise técnica.
 
-Responsável por:
+### Personalidade
 
-* Identificar ambiguidades.
-* Detectar requisitos ausentes.
-* Avaliar cenários não tratados.
-* Identificar riscos funcionais.
+Coordenador técnico neutro.
 
----
+### Influência nas decisões
 
-## ArchitectureInspector
-
-Responsável por:
-
-* Avaliar arquitetura atual.
-* Analisar modularidade e escalabilidade.
-* Identificar riscos estruturais.
-* Avaliar impactos futuros da arquitetura.
+Garantiu que cada agente recebesse apenas responsabilidades compatíveis com sua especialidade, evitando sobreposição de análises.
 
 ---
 
-## CodePracticesAdvisor
+## 2. RequirementsReviewer
 
-Responsável por:
+### Papel
 
-* Avaliar manutenção e legibilidade.
-* Identificar dívida técnica.
-* Avaliar padronização de código.
-* Identificar riscos de evolução.
+Analista de requisitos.
+
+### Responsabilidades
+
+* Encontrar ambiguidades.
+* Identificar requisitos ausentes.
+* Verificar critérios não especificados.
+* Apontar riscos funcionais.
+
+### Personalidade
+
+Analítico e criterioso.
+
+### Influência nas decisões
+
+Direcionou a equipe para problemas causados pela ausência de SLAs, requisitos de segurança e métricas de desempenho.
 
 ---
 
-## TestStrategist
+## 3. ArchitectureInspector
 
-Responsável por:
+### Papel
 
-* Avaliar cobertura de testes.
+Arquiteto de Software.
+
+### Responsabilidades
+
+* Avaliar arquitetura.
+* Identificar acoplamento excessivo.
+* Avaliar modularidade.
+* Analisar escalabilidade.
+* Avaliar viabilidade de evolução arquitetural.
+
+### Personalidade
+
+Estratégico e estrutural.
+
+### Influência nas decisões
+
+Evitou recomendações precipitadas de migração para microserviços e sugeriu modularização incremental.
+
+---
+
+## 4. CodePracticesAdvisor
+
+### Papel
+
+Especialista em qualidade de código.
+
+### Responsabilidades
+
+* Avaliar legibilidade.
+* Avaliar manutenibilidade.
+* Avaliar dívida técnica.
+* Avaliar padrões de desenvolvimento.
+
+### Personalidade
+
+Pragmático.
+
+### Influência nas decisões
+
+Reforçou a necessidade de observabilidade antes de grandes refatorações.
+
+---
+
+## 5. TestStrategist
+
+### Papel
+
+Especialista em testes.
+
+### Responsabilidades
+
+* Avaliar cobertura.
 * Identificar riscos de regressão.
-* Avaliar confiabilidade do sistema.
-* Detectar cenários sem validação.
+* Definir prioridades de automação.
+* Avaliar qualidade das validações.
+
+### Personalidade
+
+Conservador e orientado à confiabilidade.
+
+### Influência nas decisões
+
+Destacou que qualquer melhoria sem testes aumentaria o risco operacional.
 
 ---
 
-## DevOpsEngineer
+## 6. DevOpsEngineer
 
-Responsável por:
+### Papel
 
-* Avaliar deploy e operação.
+Especialista DevOps e SRE.
+
+### Responsabilidades
+
+* Avaliar deploy.
 * Avaliar observabilidade.
-* Avaliar automação e CI/CD.
-* Identificar fragilidades operacionais.
+* Avaliar monitoramento.
+* Avaliar automação.
+* Avaliar infraestrutura.
+
+### Personalidade
+
+Pragmático e operacional.
+
+### Influência nas decisões
+
+Conduziu a priorização de CI/CD, monitoramento e observabilidade.
 
 ---
 
-## SecurityAnalyst
+## 7. SecurityAnalyst
 
-Responsável por:
+### Papel
 
-* Identificar vulnerabilidades.
+Especialista em segurança.
+
+### Responsabilidades
+
+* Avaliar vulnerabilidades.
+* Avaliar autenticação.
 * Avaliar superfícies de ataque.
-* Analisar impactos de segurança.
-* Priorizar ações de mitigação.
+* Avaliar riscos operacionais.
+
+### Personalidade
+
+Preventivo e cauteloso.
+
+### Influência nas decisões
+
+Elevou MFA e rate limiting para o topo da lista de prioridades.
 
 ---
 
-## MetricsReportingAgent
+## 8. MetricsReportingAgent
 
-Responsável por:
+### Papel
 
-* Avaliar métricas existentes.
-* Identificar métricas ausentes.
+Especialista em métricas.
+
+### Responsabilidades
+
 * Priorizar riscos.
-* Avaliar impacto para o negócio.
+* Avaliar impacto.
+* Avaliar probabilidade.
+* Definir indicadores.
+
+### Personalidade
+
+Orientado a dados.
+
+### Influência nas decisões
+
+Transformou opiniões técnicas em riscos priorizados para tomada de decisão.
 
 ---
 
-## QualityOrchestratorAI
+## 9. QualityOrchestratorAI
 
-Responsável por:
+### Papel
 
-* Consolidar análises dos especialistas.
+Orquestrador final.
+
+### Responsabilidades
+
+* Consolidar resultados.
 * Identificar consensos.
-* Identificar divergências técnicas.
-* Priorizar ações recomendadas.
-* Produzir a conclusão final da auditoria.
+* Identificar divergências.
+* Criar plano final.
+* Encerrar execução.
+
+### Personalidade
+
+Executivo e imparcial.
+
+### Influência nas decisões
+
+Produziu a recomendação consolidada final da equipe.
 
 ---
 
-# 🔄 Fluxo de Execução
+# 🧠 Modelo de Coordenação
+
+Foi adotado o padrão:
+
+## Sequential Workflow
+
+Cada agente executa apenas uma vez e passa o resultado ao próximo.
+
+```text
+Planner
+ ↓
+Reviewer
+ ↓
+Architect
+ ↓
+Code Advisor
+ ↓
+Test Strategist
+ ↓
+DevOps
+ ↓
+Security
+ ↓
+Metrics
+ ↓
+Orchestrator
+```
+
+---
+
+# 🔧 Tecnologias Utilizadas
+
+## Framework Multiagente
+
+* AutoGen AgentChat
+
+## Linguagem
+
+* Python 3.12+
+
+## Provedor de IA
+
+* OpenRouter
+
+## Modelo Utilizado
+
+### Qwen3-VL-8B
+
+Características:
+
+* Baixo custo computacional.
+* Boa capacidade de raciocínio.
+* Boa aderência a instruções.
+* Respostas consistentes para agentes especializados.
+
+Configuração utilizada:
+
+```json
+{
+  "provider": "OpenRouter",
+  "model": "qwen/qwen3-vl-8b",
+  "temperature": 0.2,
+  "max_tokens": 1200
+}
+```
+
+---
+
+# ⚙️ Configuração dos Agentes
+
+## Estratégias Utilizadas
+
+### Baixa temperatura
+
+```text
+temperature = 0.2
+```
+
+Objetivo:
+
+* Reduzir alucinações.
+* Aumentar consistência.
+* Melhorar previsibilidade.
+
+---
+
+### Especialização rígida
+
+Cada agente recebeu:
+
+* Papel definido.
+* Escopo limitado.
+* Formato de saída obrigatório.
+* Proibição de assumir funções de outros agentes.
+
+---
+
+### Encerramento controlado
+
+O último agente foi configurado para finalizar sempre com:
+
+```text
+TERMINATE
+```
+
+Isso evitou loops infinitos.
+
+---
+
+### Limite de turnos
+
+```python
+max_turns = 9
+```
+
+Definido para:
+
+* Evitar conversas infinitas.
+* Controlar consumo de tokens.
+* Garantir execução determinística.
+
+---
+
+# 📝 Prompt Inicial Utilizado
+
+```text
+Estamos desenvolvendo uma plataforma SaaS para gestão financeira de pequenas empresas.
+
+Contexto atual:
+Backend em Java 8 monolítico.
+900 mil linhas de código.
+Banco PostgreSQL único.
+Deploy manual.
+Cobertura de testes inferior a 10%.
+Sem CI/CD.
+Sem monitoramento centralizado.
+Logs inconsistentes.
+APIs sem rate limiting.
+Autenticação apenas por usuário e senha.
+Sem MFA.
+Documentação desatualizada.
+50 mil usuários ativos por mês.
+Reclamações frequentes de lentidão.
+
+Equipe:
+4 desenvolvedores backend.
+1 frontend.
+1 QA.
+1 DevOps.
+
+Objetivo:
+Realizar uma auditoria completa do sistema.
+
+O resultado final deve apresentar:
+
+- Principais riscos identificados.
+- Divergências técnicas encontradas.
+- Prioridades de curto prazo.
+- Impacto esperado para o negócio.
+- Recomendação consolidada da equipe.
+```
+
+---
+
+# 📖 Roteiro das Interações
 
 ## Etapa 1
 
-O usuário fornece um cenário contendo informações sobre o sistema a ser auditado.
+QualityPlannerAI:
+
+* Resume o cenário.
+* Seleciona especialistas.
+* Define ordem de execução.
 
 ---
 
 ## Etapa 2
 
-O **QualityPlannerAI**:
+RequirementsReviewer:
 
-* Resume o cenário.
-* Organiza a auditoria.
-* Aciona os especialistas.
+* Analisa requisitos.
+* Identifica ambiguidades.
+* Identifica lacunas.
 
 ---
 
 ## Etapa 3
 
-Os especialistas realizam suas análises individuais:
+ArchitectureInspector:
 
-1. RequirementsReviewer
-2. ArchitectureInspector
-3. CodePracticesAdvisor
-4. TestStrategist
-5. DevOpsEngineer
-6. SecurityAnalyst
-7. MetricsReportingAgent
+* Analisa arquitetura.
+* Avalia escalabilidade.
+* Avalia modularização.
 
 ---
 
 ## Etapa 4
 
-O **QualityOrchestratorAI** consolida os resultados e produz:
+CodePracticesAdvisor:
 
-* Principais riscos identificados.
-* Pontos de consenso.
-* Divergências técnicas.
-* Priorização sugerida.
-* Impacto para o negócio.
-* Recomendação consolidada.
+* Analisa qualidade do código.
+* Analisa manutenção.
+* Analisa dívida técnica.
 
 ---
 
 ## Etapa 5
 
-O sistema encerra a conversa utilizando:
+TestStrategist:
 
-```text
-TERMINATE
-```
-
----
-
-# 📥 Cenário de Teste Utilizado
-
-```text
-Plataforma SaaS de gestão financeira para pequenas empresas.
-
-Backend:
-- Java 8 monolítico
-- 900 mil linhas de código
-
-Infraestrutura:
-- PostgreSQL único
-- Deploy manual
-- Sem CI/CD
-- Sem monitoramento centralizado
-
-Qualidade:
-- Cobertura de testes inferior a 10%
-- Logs inconsistentes
-- Documentação desatualizada
-
-Segurança:
-- APIs sem rate limiting
-- Autenticação apenas por usuário e senha
-- Ausência de MFA
-
-Operação:
-- 50 mil usuários ativos por mês
-- Reclamações frequentes de lentidão em horários de pico
-
-Restrições:
-- Orçamento limitado
-- Prazo de 6 meses para resultados
-```
+* Analisa testes.
+* Analisa riscos de regressão.
 
 ---
 
-# 📚 Engenharia de Prompts
+## Etapa 6
 
-Durante o desenvolvimento foram realizados diversos refinamentos nos prompts para melhorar a coordenação entre os agentes.
+DevOpsEngineer:
 
-Principais melhorias implementadas:
-
-* Separação rígida de responsabilidades.
-* Redução de respostas redundantes.
-* Eliminação de análises fora da especialidade.
-* Padronização da estrutura das respostas.
-* Controle explícito de encerramento.
-* Redução de alucinações e inferências indevidas.
+* Analisa deploy.
+* Analisa monitoramento.
+* Analisa automação.
 
 ---
 
-# ⚠️ Principais Problemas Encontrados
+## Etapa 7
 
-## 1. Especialistas extrapolando responsabilidades
+SecurityAnalyst:
 
-Exemplo:
-
-* SecurityAnalyst analisando arquitetura.
-* DevOpsEngineer sugerindo mudanças de negócio.
-* ArchitectureInspector propondo soluções sem evidências suficientes.
-
-### Solução
-
-Refinamento dos system messages com limites claros de atuação.
+* Analisa vulnerabilidades.
+* Analisa segurança operacional.
 
 ---
 
-## 2. Respostas redundantes
+## Etapa 8
 
-Diversos agentes repetiam exatamente os mesmos riscos.
+MetricsReportingAgent:
 
-### Solução
-
-Definição explícita do escopo de cada especialista.
-
----
-
-## 3. Falsos consensos
-
-O QualityOrchestratorAI inicialmente tratava opiniões isoladas como consenso da equipe.
-
-### Solução
-
-Regras específicas para:
-
-* Diferenciar consenso de opinião individual.
-* Registrar divergências reais.
-* Consolidar apenas informações presentes nas análises.
+* Prioriza riscos.
+* Avalia impactos.
 
 ---
 
-## 4. Conversas que não terminavam
+## Etapa 9
 
-O grupo continuava gerando mensagens após a conclusão.
+QualityOrchestratorAI:
 
-### Solução
-
-Implementação obrigatória da palavra:
-
-```text
-TERMINATE
-```
-
-como condição de encerramento da auditoria.
-
----
-
-# 🧠 Curiosidades e Aprendizados
-
-## Como a personalidade dos agentes influenciou as decisões?
-
-Cada agente foi configurado para agir como um especialista de uma área específica.
-
-Isso fez com que:
-
-* O SecurityAnalyst priorizasse segurança.
-* O DevOpsEngineer priorizasse observabilidade.
-* O TestStrategist priorizasse testes e regressão.
-* O ArchitectureInspector focasse sustentabilidade técnica.
-* O MetricsReportingAgent priorizasse impacto e criticidade.
-
-O resultado final foi uma análise mais rica e multidisciplinar.
-
----
-
-## Houve conflitos entre agentes?
-
-Sim.
-
-### Exemplo
-
-**ArchitectureInspector**
-
-* Defendia modularização futura do sistema.
-
-**DevOpsEngineer**
-
-* Defendia observabilidade antes de qualquer refatoração.
-
-### Resolução
-
-O QualityOrchestratorAI consolidou a recomendação priorizando observabilidade antes de mudanças arquiteturais.
-
----
-
-## Quais os riscos de prompts mal configurados?
-
-| Agente                | Possível Problema                      |
-| --------------------- | -------------------------------------- |
-| QualityPlannerAI      | Distribuir tarefas incorretamente      |
-| RequirementsReviewer  | Inventar requisitos inexistentes       |
-| ArchitectureInspector | Recomendar microserviços sem evidência |
-| CodePracticesAdvisor  | Assumir problemas não observados       |
-| TestStrategist        | Definir metas irrealistas              |
-| DevOpsEngineer        | Ignorar restrições operacionais        |
-| SecurityAnalyst       | Inventar vulnerabilidades              |
-| MetricsReportingAgent | Tratar estimativas como fatos          |
-| QualityOrchestratorAI | Criar consensos inexistentes           |
-
----
-
-## Melhorias Implementadas
-
-* Refinamento iterativo dos prompts.
-* Melhor separação de responsabilidades.
-* Padronização da saída dos agentes.
-* Controle de término da conversa.
-* Redução de alucinações.
-* Melhor consolidação de consensos e divergências.
+* Consolida resultados.
+* Identifica consensos.
+* Identifica divergências.
+* Produz relatório final.
+* Encerra execução.
 
 ---
 
 # 📸 Evidências de Funcionamento
 
-As evidências da execução do sistema encontram-se na pasta:
+As evidências devem incluir:
 
-```text
-/evidencias
+## Prints da execução
+
+* Planejamento inicial.
+* Respostas dos especialistas.
+* Consolidação final.
+
+## Logs
+
+* Histórico completo da conversa.
+* Ordem de execução dos agentes.
+* Encerramento com `TERMINATE`.
+
+## Métricas
+
+* Quantidade de turnos.
+* Consumo de tokens.
+* Tempo de execução.
+
+---
+
+# 🎓 Aprendizados Obtidos
+
+## Como a personalidade influenciou as decisões?
+
+Cada personalidade direcionou o foco das análises:
+
+| Agente                | Influência                  |
+| --------------------- | --------------------------- |
+| RequirementsReviewer  | Requisitos e critérios      |
+| ArchitectureInspector | Sustentabilidade estrutural |
+| CodePracticesAdvisor  | Manutenção e qualidade      |
+| TestStrategist        | Confiabilidade              |
+| DevOpsEngineer        | Operação                    |
+| SecurityAnalyst       | Proteção                    |
+| MetricsReportingAgent | Priorização                 |
+| QualityOrchestratorAI | Síntese                     |
+
+---
+
+## Houve conflitos entre agentes?
+
+Poucos conflitos explícitos ocorreram.
+
+Os principais potenciais conflitos foram:
+
+### Arquitetura vs DevOps
+
+Arquitetura:
+
+> Modularizar primeiro.
+
+DevOps:
+
+> Ganhar visibilidade primeiro.
+
+### Segurança vs Negócio
+
+Segurança:
+
+> MFA imediatamente.
+
+Negócio:
+
+> Menor impacto possível ao usuário.
+
+### Testes vs Prazo
+
+QA:
+
+> Aumentar cobertura rapidamente.
+
+Negócio:
+
+> Entregar resultados em 6 meses.
+
+---
+
+## Como o orquestrador resolveria conflitos?
+
+Utilizando:
+
+1. Impacto no negócio.
+2. Risco associado.
+3. Custo de implementação.
+4. Prazo disponível.
+
+Priorizando ações de maior retorno e menor custo.
+
+---
+
+# ⚠️ Riscos de Má Configuração dos Agentes
+
+## QualityPlannerAI
+
+Risco:
+
+* Planejamento incorreto.
+* Especialistas errados.
+* Fluxo quebrado.
+
+---
+
+## RequirementsReviewer
+
+Risco:
+
+* Requisitos inexistentes.
+* Priorização equivocada.
+
+---
+
+## ArchitectureInspector
+
+Risco:
+
+* Recomendações inviáveis.
+* Refatorações desnecessárias.
+
+---
+
+## CodePracticesAdvisor
+
+Risco:
+
+* Dívida técnica ignorada.
+* Foco excessivo em estilo.
+
+---
+
+## TestStrategist
+
+Risco:
+
+* Cobertura insuficiente.
+* Falta de validação.
+
+---
+
+## DevOpsEngineer
+
+Risco:
+
+* Automações inadequadas.
+* Operação instável.
+
+---
+
+## SecurityAnalyst
+
+Risco:
+
+* Vulnerabilidades ignoradas.
+* Falsa sensação de segurança.
+
+---
+
+## MetricsReportingAgent
+
+Risco:
+
+* Priorização incorreta.
+* Decisões sem dados.
+
+---
+
+## QualityOrchestratorAI
+
+Risco:
+
+* Consolidação incorreta.
+* Conclusões inconsistentes.
+
+---
+
+# 🚀 Melhorias Realizadas Durante o Projeto
+
+Durante os testes foram identificados problemas de:
+
+* Repetição excessiva.
+* Vazamento de responsabilidades.
+* Loops de conversa.
+* Alucinações.
+
+Foram implementadas as seguintes melhorias:
+
+### Especialização rígida
+
+Cada agente passou a responder apenas dentro do seu domínio.
+
+### Limite de turnos
+
+```python
+max_turns = 9
 ```
 
-Contendo:
+### Encerramento obrigatório
 
-* Planejamento da auditoria.
-* Análises dos especialistas.
-* Consolidação final.
-* Encerramento da execução.
+```text
+TERMINATE
+```
 
----
+### Remoção de linguagem emocional
 
-# 🚀 Tecnologias Utilizadas
+Agentes passaram a responder de forma técnica e objetiva.
 
-* Python
-* AutoGen AgentChat
-* LLMs locais (Qwen / Gemma / Nemotron)
-* GitHub
-* Markdown
+### Consolidação baseada apenas em evidências
+
+O orquestrador passou a utilizar somente informações citadas pelos especialistas.
 
 ---
 
-# 📄 Conclusão
+# 📊 Resultado Final
 
-O projeto demonstrou que sistemas multiagentes podem reproduzir, de forma organizada, um processo de auditoria técnica semelhante ao realizado por equipes multidisciplinares reais.
+A equipe multiagente conseguiu:
+✅ Identificar riscos críticos de segurança
+✅ Identificar gargalos operacionais
+✅ Priorizar melhorias de curto prazo
+✅ Produzir recomendações consolidadas
+✅ Demonstrar coordenação entre agentes especializados
+✅ Simular uma auditoria técnica multidisciplinar
 
-Além da auditoria em si, o principal aprendizado foi a importância da engenharia de prompts e da coordenação adequada entre agentes especializados, evitando sobreposição de responsabilidades, conclusões inconsistentes e decisões baseadas em informações não verificadas.
+---
+
+# 👥 Equipe
+
+Projeto desenvolvido para a Residência Tecnológica do Porto Digital utilizando AutoGen e LLMs especializados em um ambiente multiagente coordenado.
+
+---
+
+> **Conclusão:** O uso de agentes especializados demonstrou ser uma abordagem eficiente para decompor problemas complexos, distribuir responsabilidades e produzir análises técnicas mais estruturadas do que uma única chamada a um modelo geral.
