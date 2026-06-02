@@ -1,4 +1,4 @@
-# CodeGuardian AI
+# CodeGuardian AI 🤖
 
 > Sistema Multiagente para Auditoria de Qualidade de Software.
 > Projeto desenvolvido para a Residência Tecnológica do Porto Digital, utilizando uma arquitetura multiagente baseada em LLMs especializados para execução colaborativa de auditorias técnicas em sistemas de software.
