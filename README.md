@@ -1,6 +1,7 @@
 # Sistema Multiagente para Auditoria de Qualidade de Software
 
 > Projeto desenvolvido para a Residência Tecnológica do Porto Digital, utilizando uma arquitetura multiagente baseada em LLMs especializados para execução colaborativa de auditorias técnicas em sistemas de software.
+> Participantes: Maria Clara Trevizane Buonafina
 
 ---
 
@@ -750,6 +751,7 @@ O orquestrador passou a utilizar somente informações citadas pelos especialist
 # 📊 Resultado Final
 
 A equipe multiagente conseguiu:
+
 ✅ Identificar riscos críticos de segurança
 
 ✅ Identificar gargalos operacionais
