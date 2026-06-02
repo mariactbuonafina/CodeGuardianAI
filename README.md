@@ -768,7 +768,7 @@ A equipe multiagente conseguiu:
 # 👥 Equipe
 
 Projeto desenvolvido para a Residência Tecnológica do Porto Digital utilizando AutoGen e LLMs especializados em um ambiente multiagente coordenado.
-Colaboradores: Maria Clara Trevizane Buonafina
+Colaboradores: Maria Clara Trevizane Buonafina , João Vitor Rodrigues da Silva, Maria Eduarda Trevizane Buonafina, Luís Fernando Andrade da Silva 
 
 ---
 
