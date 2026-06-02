@@ -751,10 +751,15 @@ O orquestrador passou a utilizar somente informações citadas pelos especialist
 
 A equipe multiagente conseguiu:
 ✅ Identificar riscos críticos de segurança
+
 ✅ Identificar gargalos operacionais
+
 ✅ Priorizar melhorias de curto prazo
+
 ✅ Produzir recomendações consolidadas
+
 ✅ Demonstrar coordenação entre agentes especializados
+
 ✅ Simular uma auditoria técnica multidisciplinar
 
 ---
