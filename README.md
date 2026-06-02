@@ -329,12 +329,21 @@ Características:
 Configuração utilizada:
 
 ```json
-{
-  "provider": "OpenRouter",
-  "model": "qwen/qwen3-vl-8b",
-  "temperature": 0.2,
-  "max_tokens": 1200
-}
+"config": {
+        "model": "qwen/qwen3-vl-8b",
+        "base_url": "http://localhost:1234/v1",
+        "api_key": "lm-studio",
+        "model_info": {
+          "vision": true,
+          "function_calling": true,
+          "json_output": true,
+          "family": "qwen",
+          "structured_output": true
+        },
+        "temperature": 0.2,
+        "max_tokens": 1200,
+        "top_p": 0.8
+      }
 ```
 
 ---
